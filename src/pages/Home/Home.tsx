@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "./styles";
-import MenuIcon from "../../assets/menuIcon.svg";
+//@ts-ignore
+import { ReactComponent as MenuIcon } from "../../assets/menuIcon.svg";
 
 export const Home: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ export const Home: React.FC = () => {
           />
         </a>
         <button>
-          <img src={MenuIcon} width={25} height={25} alt="Menu" />
+          <MenuIcon />
         </button>
       </Header>
     </div>
