@@ -1,12 +1,38 @@
-import React, { useState } from "react";
-import { Header, ModalContent, ContainerHome, Icon } from "./styles";
+import React, { useEffect, useState } from "react";
+import {
+  Header,
+  ModalContent,
+  ContainerHome,
+  Icon,
+  Photo,
+  Description,
+} from "./styles";
 import MenuIcon from "../../assets/menuIcon.svg";
 import { Box, Modal } from "@mui/material";
 import { isMobile } from "react-device-detect";
 import CloseIcon from "@mui/icons-material/Close";
+import ProfilePhoto from "../../assets/profile.png";
 
 export const Home: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const text =
+    "Hello, I am John Doe, an Art Director and Digital Designer currently available to work as a freelancer or full-time. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+  const [displayText, setDisplayText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (charIndex < text.length) {
+        setDisplayText(displayText + text.charAt(charIndex));
+        setCharIndex(charIndex + 1);
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 50);
+
+    return () => clearInterval(intervalId);
+  }, [charIndex, text, displayText]);
 
   return (
     <div>
@@ -57,7 +83,14 @@ export const Home: React.FC = () => {
           </Box>
         </Modal>
       </Header>
-      <ContainerHome></ContainerHome>
+      <ContainerHome>
+        <Photo>
+          <img src={ProfilePhoto} alt="ProfilePhoto" />
+        </Photo>
+        <Description>
+          <p>{displayText}</p>
+        </Description>
+      </ContainerHome>
     </div>
   );
 };

@@ -85,5 +85,75 @@ export const Icon = styled.div`
 
 export const ContainerHome = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 58px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 767px) {
+    height: calc(100vh - 92px);
+  }
+`;
+
+export const Photo = styled.div`
+  display: flex;
+  width: 340px;
+  height: 400px;
+
+  img {
+    width: 340px;
+    height: 400px;
+    border-radius: 16px;
+    transition: opacity 1s;
+  }
+
+  img:hover {
+    opacity: 0.5;
+  }
+
+  @media (min-width: 767px) {
+    width: 425px;
+    height: 500px;
+
+    img {
+      width: 425px;
+      height: 500px;
+    }
+  }
+`;
+
+export const Description = styled.div`
+  height: 300px;
+  padding: 0 32px;
+  max-width: 500px;
+  min-width: 500px;
+
+  p {
+    min-width: 500px;
+    font-size: 20px;
+    overflow: hidden;
+    padding-right: 10px;
+    color: #ffffff;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: orange;
+    }
+  }
 `;
