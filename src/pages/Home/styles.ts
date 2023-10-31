@@ -1,19 +1,15 @@
 import styled from "styled-components";
 
-type HeaderProps = {
-  isMobile?: boolean;
-};
-
-export const Header = styled.div<HeaderProps>`
+export const Header = styled.div`
   display: flex;
   align-items: center;
-  justify-content: ${({ isMobile }) => (isMobile ? "flex-end" : "center")};
+  justify-content: flex-end;
   width: 100%;
   height: 58px;
 
   a {
     font-family: Poppins, sans-serif;
-    display: flex;
+    display: none;
     align-items: center;
     margin: 0 16px;
     cursor: pointer;
@@ -26,6 +22,11 @@ export const Header = styled.div<HeaderProps>`
 
     img:hover {
       animation: slideRight 1s linear infinite;
+    }
+
+    @media (min-width: 767px) {
+      justify-content: "center";
+      display: flex;
     }
   }
 
@@ -44,8 +45,8 @@ export const Header = styled.div<HeaderProps>`
   button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-left: ${({ isMobile }) => (isMobile ? 0 : "32px")};
+
+    margin-left: 0;
 
     svg {
       cursor: pointer;
@@ -55,6 +56,10 @@ export const Header = styled.div<HeaderProps>`
 
   @media (min-width: 767px) {
     height: 92px;
+    justify-content: center;
+    button {
+      margin-left: 32px;
+    }
   }
 `;
 
@@ -65,6 +70,7 @@ export const ModalContent = styled.div`
   justify-content: center;
   max-height: 100%;
   width: fit-content;
+  background-color: rgba(16, 16, 16, 0.8);
 
   a {
     font-size: 28px;
@@ -96,9 +102,7 @@ export const ContainerHome = styled.div`
 `;
 
 export const Photo = styled.div`
-  display: flex;
-  width: 340px;
-  height: 400px;
+  display: none;
 
   img {
     width: 340px;
@@ -114,6 +118,7 @@ export const Photo = styled.div`
   @media (min-width: 767px) {
     width: 425px;
     height: 500px;
+    display: flex;
 
     img {
       width: 425px;
@@ -123,18 +128,38 @@ export const Photo = styled.div`
 `;
 
 export const Description = styled.div`
-  height: 300px;
   padding: 0 32px;
-  max-width: 500px;
-  min-width: 500px;
+  height: 294px;
+  width: 100%;
+  border-radius: 16px;
+
+  h3 {
+    font-size: 48px;
+    line-height: 54px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    text-align: left;
+  }
 
   p {
-    min-width: 500px;
+    min-width: 90%;
     font-size: 20px;
     overflow: hidden;
     padding-right: 10px;
     color: #ffffff;
+    text-align: left;
     animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+
+  @media (min-width: 767px) {
+    margin-left: 32px;
+    max-width: 500px;
+    min-width: 500px;
+
+    p {
+      min-width: 500px;
+    }
   }
 
   @keyframes typing {
@@ -154,6 +179,27 @@ export const Description = styled.div`
     }
     50% {
       border-color: orange;
+    }
+  }
+`;
+
+export const ScrollAnimation = styled.div`
+  display: flex;
+  position: absolute;
+  bottom: 32px;
+  animation: bounce 1s infinite;
+  cursor: pointer;
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(5px);
     }
   }
 `;

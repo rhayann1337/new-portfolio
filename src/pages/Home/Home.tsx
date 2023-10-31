@@ -6,18 +6,19 @@ import {
   Icon,
   Photo,
   Description,
+  ScrollAnimation,
 } from "./styles";
 import MenuIcon from "../../assets/menuIcon.svg";
 import { Box, Modal } from "@mui/material";
-import { isMobile } from "react-device-detect";
 import CloseIcon from "@mui/icons-material/Close";
 import ProfilePhoto from "../../assets/profile.png";
+import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
 
 export const Home: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const text =
-    "Hello, I am John Doe, an Art Director and Digital Designer currently available to work as a freelancer or full-time. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    "Hello, Im Rhayann, an web and mobile developer and my journey is marked by challenges overcome, enriching experiences and an unwavering commitment to excellence.";
   const [displayText, setDisplayText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
 
@@ -36,23 +37,21 @@ export const Home: React.FC = () => {
 
   return (
     <div>
-      <Header isMobile={isMobile}>
-        {!isMobile && (
-          <>
-            <a>Instagram</a>
-            <a>Github</a>
-            <a>Linkedin</a>
-            <a>
-              Lets talk
-              <img
-                src="https://www.okler.net/previews/porto/9.9.3/img/demos/personal-portfolio-1/svg/arrow.svg"
-                width={25}
-                height={25}
-                alt="Arrow"
-              />
-            </a>
-          </>
-        )}
+      <Header>
+        <>
+          <a>Instagram</a>
+          <a>Github</a>
+          <a>Linkedin</a>
+          <a>
+            Lets talk
+            <img
+              src="https://www.okler.net/previews/porto/9.9.3/img/demos/personal-portfolio-1/svg/arrow.svg"
+              width={25}
+              height={25}
+              alt="Arrow"
+            />
+          </a>
+        </>
 
         <button onClick={() => setShowMenu(true)}>
           <img src={MenuIcon} width={25} height={25} alt="Menu" />
@@ -66,6 +65,7 @@ export const Home: React.FC = () => {
               alignItems: "center",
               justifyContent: "center",
               border: "none",
+              backgroundColor: "rgba(16, 16, 16, 0.9)",
             }}
           >
             <ModalContent>
@@ -88,8 +88,13 @@ export const Home: React.FC = () => {
           <img src={ProfilePhoto} alt="ProfilePhoto" />
         </Photo>
         <Description>
+          <h3>Freelance</h3>
+          <h3>Software Engineer</h3>
           <p>{displayText}</p>
         </Description>
+        <ScrollAnimation>
+          <KeyboardDoubleArrowDownIcon sx={{ color: "white" }} />
+        </ScrollAnimation>
       </ContainerHome>
     </div>
   );
