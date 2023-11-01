@@ -203,3 +203,58 @@ export const ScrollAnimation = styled.div`
     }
   }
 `;
+
+export const ContainerExperiences = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  align-items: flex-start;
+  padding: 40px;
+
+  h3 {
+    font-size: 32px;
+    line-height: 44px;
+    font-weight: 400;
+  }
+`;
+
+export const Experiences = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+
+  img {
+    max-height: 35px;
+    max-width: 125px;
+    min-height: 35px;
+    margin: 16px;
+    cursor: pointer;
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+  }
+
+  img:hover {
+    filter: grayscale(0%);
+  }
+
+  @media (min-width: 767px) {
+    flex-direction: row;
+
+    img {
+      margin: 0 32px;
+    }
+  }
+`;
+
+export const Technologies = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 40px 0;
+
+  h3 {
+    line-height: 16px;
+  }
+`;

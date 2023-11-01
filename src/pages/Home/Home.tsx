@@ -7,12 +7,26 @@ import {
   Photo,
   Description,
   ScrollAnimation,
+  Experiences,
+  ContainerExperiences,
+  Technologies,
 } from "./styles";
 import MenuIcon from "../../assets/menuIcon.svg";
-import { Box, Modal } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Modal,
+  Typography,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ProfilePhoto from "../../assets/profile.png";
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
+import Ohubdev from "../../assets/ohubdevfooter.svg";
+import Automac from "../../assets/automac.png";
+import Arco from "../../assets/arco.svg";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export const Home: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -96,6 +110,172 @@ export const Home: React.FC = () => {
           <KeyboardDoubleArrowDownIcon sx={{ color: "white" }} />
         </ScrollAnimation>
       </ContainerHome>
+      <ContainerExperiences>
+        <h3>Experiences and projects</h3>
+        <Experiences>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Gft_logo.svg"
+            alt="Gft"
+            onClick={() => window.open(" https://www.gft.com/int/en")}
+          />
+          <img
+            src="https://brand.dasa.com.br/wp-content/uploads/2021/03/marca-dasa-02-azulclaro-fundoescuro.svg"
+            alt="Dasa"
+            onClick={() => window.open(" https://nav.dasa.com.br/")}
+          />
+          <img src={Ohubdev} alt="Ohubdev" />
+          <img
+            src={Automac}
+            alt="Automac"
+            onClick={() =>
+              window.open("https://auto-mac.000webhostapp.com/login")
+            }
+          />
+          <img
+            src={Arco}
+            alt="Arco"
+            onClick={() => window.open("https://arcoeducacao.com.br/")}
+          />
+        </Experiences>
+
+        <Technologies>
+          <Accordion sx={{ boxShadow: "none" }}>
+            <AccordionSummary>
+              <h3>
+                Technologies <ExpandMoreIcon />
+              </h3>
+            </AccordionSummary>
+            <AccordionDetails>
+            <div style="display: flex; align-items: flex-start; align: center">
+<table align="center">
+  <tr>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="40" height="40" />
+      <br />React
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="40" height="40" />
+      <br />JavaScript
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/cpp-icon.svg" alt="icon" width="40" height="40" />
+      <br />C++
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/webpack-icon.svg" alt="icon" width="40" height="40" />
+      <br />Webpack
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="icon" width="40" height="40" />
+      <br />MySQL
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="icon" width="40" height="40" />
+      <br />TypeScript
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="40" height="40" />
+      <br />AWS
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/csharp-icon.svg" alt="icon" width="40" height="40" />
+      <br />C#
+    </td>
+     <td align="center" width="96">
+        <img src="https://www.vectorlogo.zone/logos/elixir-lang/elixir-lang-icon.svg"width="40" height="40" alt="Elixir" />
+      <br />Elixir
+    </td>
+    
+  </tr>
+  <tr>
+  <td align="center" width="96">
+        <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="icon" width="40" height="40" />
+      <br />Java
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/github-icon.svg" alt="icon" width="40" height="40" />
+      <br />Github
+    </td>
+    <td align="center" width="96"> 
+        <img src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png" width="40" height="40" alt="Git" />
+      <br />Git
+    </td>
+    <td align="center"  width="96">
+        <img src="https://skillicons.dev/icons?i=laravel" width="40" height="40" alt="Laravel" />
+      <br />Laravel
+    </td>
+    <td align="center"  width="96">
+        <img src="https://skillicons.dev/icons?i=html" width="40" height="40" alt="HTML5" />
+      <br />HTML5
+    </td>
+    <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=css" width="40" height="40" alt="css" />
+      <br />CSS
+    </td>
+    <td align="center"  width="96">
+        <img src="https://skillicons.dev/icons?i=bootstrap" width="40" height="40" alt="bootstrap" />
+      <br />Bootstrap
+    </td>
+    <td align="center" width="96">
+        <img src="https://techstack-generator.vercel.app/react-icon.svg" width="40" height="40" alt="tailwind" />
+      <br />React Native
+    </td>
+    <td align="center" width="96">
+        <img src="https://www.vectorlogo.zone/logos/reducer/reducer-icon.svg"width="40" height="40" alt="Reducer" />
+      <br />Reducer
+    </td>
+    </td>
+   
+  </tr>
+ <tr>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=mongodb" width="40" height="40" alt="MongoDB" />
+      <br />MongoDB
+    </td>
+        <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=nodejs" width="40" height="40" alt="Nodejs" />
+      <br />Nodejs
+      </td>
+      </td>
+    <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=php" width="40" height="40" alt="PHP" />
+      <br />PHP
+    </td>
+  <td align="center" width="96">
+      <a href="#macropower-tech">
+        <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="icon" width="40" height="40" />
+      </a>
+      <br />SQLite
+    <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=postgres" width="40" height="40" alt="PostgreSQL" />
+      <br />PostgreSQL
+    </td>
+     <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=jquery"width="40" height="40" alt="jQuery" />
+      <br />jQuery
+    </td>
+     <td align="center" width="96">
+        <img src="https://www.vectorlogo.zone/logos/angular/angular-icon.svg"width="40" height="40" alt="Angular" />
+      <br />Angular
+    </td>
+      <td align="center" width="96">
+        <img src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg"width="40" height="40" alt="Graph QL" />
+      <br />Graph QL
+    </td>
+     <td align="center" width="96">
+        <img src="https://www.vectorlogo.zone/logos/bitbucket/bitbucket-icon.svg"width="40" height="40" alt="Bitbucket" />
+      <br />Bitbucket
+    </td>
+     
+
+
+   
+ </tr>
+</table>
+</div>
+            </AccordionDetails>
+          </Accordion>
+        </Technologies>
+      </ContainerExperiences>
     </div>
   );
 };
