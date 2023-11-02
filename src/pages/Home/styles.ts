@@ -45,7 +45,6 @@ export const Header = styled.div`
   button {
     display: flex;
     align-items: center;
-
     margin-left: 0;
 
     svg {
@@ -256,5 +255,40 @@ export const Technologies = styled.div`
 
   h3 {
     line-height: 16px;
+  }
+`;
+
+export const ContainerGrid = styled.div`
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  font-size: 12px;
+
+  .grid-item {
+    border-bottom: 1px solid #000;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 70px;
+  }
+
+  @media (min-width: 767px) {
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    font-size: initial;
+
+    .grid-item {
+      padding: 20px;
+      height: initial;
+      width: initial;
+    }
   }
 `;

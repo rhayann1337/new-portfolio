@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Header,
   ModalContent,
@@ -10,6 +10,7 @@ import {
   Experiences,
   ContainerExperiences,
   Technologies,
+  ContainerGrid,
 } from "./styles";
 import MenuIcon from "../../assets/menuIcon.svg";
 import {
@@ -30,7 +31,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export const Home: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
-
+  const experienceDiv = useRef<HTMLDivElement>(null);
   const text =
     "Hello, Im Rhayann, an web and mobile developer and my journey is marked by challenges overcome, enriching experiences and an unwavering commitment to excellence.";
   const [displayText, setDisplayText] = useState("");
@@ -48,6 +49,12 @@ export const Home: React.FC = () => {
 
     return () => clearInterval(intervalId);
   }, [charIndex, text, displayText]);
+
+  const handleScrollToDiv = () => {
+    if (experienceDiv.current) {
+      experienceDiv.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div>
@@ -106,11 +113,11 @@ export const Home: React.FC = () => {
           <h3>Software Engineer</h3>
           <p>{displayText}</p>
         </Description>
-        <ScrollAnimation>
+        <ScrollAnimation onClick={handleScrollToDiv}>
           <KeyboardDoubleArrowDownIcon sx={{ color: "white" }} />
         </ScrollAnimation>
       </ContainerHome>
-      <ContainerExperiences>
+      <ContainerExperiences ref={experienceDiv}>
         <h3>Experiences and projects</h3>
         <Experiences>
           <img
@@ -146,132 +153,275 @@ export const Home: React.FC = () => {
               </h3>
             </AccordionSummary>
             <AccordionDetails>
-            <div style="display: flex; align-items: flex-start; align: center">
-<table align="center">
-  <tr>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/react-icon.svg" alt="icon" width="40" height="40" />
-      <br />React
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/js-icon.svg" alt="icon" width="40" height="40" />
-      <br />JavaScript
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/cpp-icon.svg" alt="icon" width="40" height="40" />
-      <br />C++
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/webpack-icon.svg" alt="icon" width="40" height="40" />
-      <br />Webpack
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/mysql-icon.svg" alt="icon" width="40" height="40" />
-      <br />MySQL
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/ts-icon.svg" alt="icon" width="40" height="40" />
-      <br />TypeScript
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/aws-icon.svg" alt="icon" width="40" height="40" />
-      <br />AWS
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/csharp-icon.svg" alt="icon" width="40" height="40" />
-      <br />C#
-    </td>
-     <td align="center" width="96">
-        <img src="https://www.vectorlogo.zone/logos/elixir-lang/elixir-lang-icon.svg"width="40" height="40" alt="Elixir" />
-      <br />Elixir
-    </td>
-    
-  </tr>
-  <tr>
-  <td align="center" width="96">
-        <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="icon" width="40" height="40" />
-      <br />Java
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/github-icon.svg" alt="icon" width="40" height="40" />
-      <br />Github
-    </td>
-    <td align="center" width="96"> 
-        <img src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png" width="40" height="40" alt="Git" />
-      <br />Git
-    </td>
-    <td align="center"  width="96">
-        <img src="https://skillicons.dev/icons?i=laravel" width="40" height="40" alt="Laravel" />
-      <br />Laravel
-    </td>
-    <td align="center"  width="96">
-        <img src="https://skillicons.dev/icons?i=html" width="40" height="40" alt="HTML5" />
-      <br />HTML5
-    </td>
-    <td align="center" width="96">
-        <img src="https://skillicons.dev/icons?i=css" width="40" height="40" alt="css" />
-      <br />CSS
-    </td>
-    <td align="center"  width="96">
-        <img src="https://skillicons.dev/icons?i=bootstrap" width="40" height="40" alt="bootstrap" />
-      <br />Bootstrap
-    </td>
-    <td align="center" width="96">
-        <img src="https://techstack-generator.vercel.app/react-icon.svg" width="40" height="40" alt="tailwind" />
-      <br />React Native
-    </td>
-    <td align="center" width="96">
-        <img src="https://www.vectorlogo.zone/logos/reducer/reducer-icon.svg"width="40" height="40" alt="Reducer" />
-      <br />Reducer
-    </td>
-    </td>
-   
-  </tr>
- <tr>
-      <td align="center" width="96">
-        <img src="https://skillicons.dev/icons?i=mongodb" width="40" height="40" alt="MongoDB" />
-      <br />MongoDB
-    </td>
-        <td align="center" width="96">
-        <img src="https://skillicons.dev/icons?i=nodejs" width="40" height="40" alt="Nodejs" />
-      <br />Nodejs
-      </td>
-      </td>
-    <td align="center" width="96">
-        <img src="https://skillicons.dev/icons?i=php" width="40" height="40" alt="PHP" />
-      <br />PHP
-    </td>
-  <td align="center" width="96">
-      <a href="#macropower-tech">
-        <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="icon" width="40" height="40" />
-      </a>
-      <br />SQLite
-    <td align="center" width="96">
-        <img src="https://skillicons.dev/icons?i=postgres" width="40" height="40" alt="PostgreSQL" />
-      <br />PostgreSQL
-    </td>
-     <td align="center" width="96">
-        <img src="https://skillicons.dev/icons?i=jquery"width="40" height="40" alt="jQuery" />
-      <br />jQuery
-    </td>
-     <td align="center" width="96">
-        <img src="https://www.vectorlogo.zone/logos/angular/angular-icon.svg"width="40" height="40" alt="Angular" />
-      <br />Angular
-    </td>
-      <td align="center" width="96">
-        <img src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg"width="40" height="40" alt="Graph QL" />
-      <br />Graph QL
-    </td>
-     <td align="center" width="96">
-        <img src="https://www.vectorlogo.zone/logos/bitbucket/bitbucket-icon.svg"width="40" height="40" alt="Bitbucket" />
-      <br />Bitbucket
-    </td>
-     
-
-
-   
- </tr>
-</table>
-</div>
+              <ContainerGrid>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/react-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  React
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/js-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  JavaScript
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/cpp-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  C++
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/webpack-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  Webpack
+                </div>
+                <div className="grid-item">
+                  <img
+                    src="https://techstack-generator.vercel.app/mysql-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  MySQL
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/ts-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  TypeScript
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/aws-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  AWS
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/csharp-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  C#
+                </div>
+                <div className="grid-item">
+                  <img
+                    src="https://www.vectorlogo.zone/logos/elixir-lang/elixir-lang-icon.svg"
+                    width="40"
+                    height="40"
+                    alt="Elixir"
+                  />
+                  Elixir
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://www.vectorlogo.zone/logos/java/java-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  Java
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/github-icon.svg"
+                    alt="icon"
+                    width="40"
+                    height="40"
+                  />
+                  Github
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://www.vectorlogo.zone/logos/bitbucket/bitbucket-icon.svg"
+                    width="40"
+                    height="40"
+                    alt="Bitbucket"
+                  />
+                  Bitbucket
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png"
+                    width="40"
+                    height="40"
+                    alt="Git"
+                  />
+                  Git
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://skillicons.dev/icons?i=laravel"
+                    width="40"
+                    height="40"
+                    alt="Laravel"
+                  />
+                  Laravel
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://skillicons.dev/icons?i=html"
+                    width="40"
+                    height="40"
+                    alt="HTML5"
+                  />
+                  HTML5
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://skillicons.dev/icons?i=css"
+                    width="40"
+                    height="40"
+                    alt="css"
+                  />
+                  CSS
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://skillicons.dev/icons?i=bootstrap"
+                    width="40"
+                    height="40"
+                    alt="bootstrap"
+                  />
+                  Bootstrap
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://techstack-generator.vercel.app/react-icon.svg"
+                    width="40"
+                    height="40"
+                    alt="tailwind"
+                  />
+                  React Native
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://www.vectorlogo.zone/logos/reducer/reducer-icon.svg"
+                    width="40"
+                    height="40"
+                    alt="Reducer"
+                  />
+                  Reducer
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://skillicons.dev/icons?i=mongodb"
+                    width="40"
+                    height="40"
+                    alt="MongoDB"
+                  />
+                  MongoDB
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://skillicons.dev/icons?i=nodejs"
+                    width="40"
+                    height="40"
+                    alt="Nodejs"
+                  />
+                  Nodejs
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://skillicons.dev/icons?i=php"
+                    width="40"
+                    height="40"
+                    alt="PHP"
+                  />
+                  PHP
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <a href="#macropower-tech">
+                    <img
+                      src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg"
+                      alt="icon"
+                      width="40"
+                      height="40"
+                    />
+                  </a>
+                  SQLite
+                </div>
+                <div className="grid-item">
+                  <img
+                    src="https://skillicons.dev/icons?i=postgres"
+                    width="40"
+                    height="40"
+                    alt="PostgreSQL"
+                  />
+                  PostgreSQL
+                </div>
+                <div className="grid-item">
+                  <img
+                    src="https://skillicons.dev/icons?i=jquery"
+                    width="40"
+                    height="40"
+                    alt="jQuery"
+                  />
+                  jQuery
+                </div>
+                <div className="grid-item">
+                  <img
+                    src="https://www.vectorlogo.zone/logos/angular/angular-icon.svg"
+                    width="40"
+                    height="40"
+                    alt="Angular"
+                  />
+                  Angular
+                </div>
+                <div className="grid-item">
+                  {" "}
+                  <img
+                    src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg"
+                    width="40"
+                    height="40"
+                    alt="Graph QL"
+                  />
+                  Graph QL
+                </div>
+              </ContainerGrid>
             </AccordionDetails>
           </Accordion>
         </Technologies>
