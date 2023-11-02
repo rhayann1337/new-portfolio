@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Moon from "../../assets/moon.png";
 
 export const Header = styled.div`
   display: flex;
@@ -25,7 +24,7 @@ export const Header = styled.div`
       animation: slideRight 1s linear infinite;
     }
 
-    @media (min-width: 767px) {
+    @media (min-width: 1024px) {
       justify-content: "center";
       display: flex;
     }
@@ -54,7 +53,7 @@ export const Header = styled.div`
     }
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 1024px) {
     height: 92px;
     justify-content: center;
     button {
@@ -96,7 +95,7 @@ export const ContainerHome = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 767px) {
+  @media (min-width: 1024px) {
     height: calc(100vh - 92px);
   }
 `;
@@ -115,7 +114,7 @@ export const Photo = styled.div`
     opacity: 0.5;
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 1024px) {
     width: 425px;
     height: 500px;
     display: flex;
@@ -152,7 +151,7 @@ export const Description = styled.div`
     animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 1024px) {
     margin-left: 32px;
     max-width: 500px;
     min-width: 500px;
@@ -207,7 +206,7 @@ export const ScrollAnimation = styled.div`
 export const ContainerExperiences = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1);
   align-items: flex-start;
   padding: 40px;
 
@@ -239,7 +238,7 @@ export const Experiences = styled.div`
     filter: grayscale(0%);
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 1024px) {
     flex-direction: row;
 
     img {
@@ -252,10 +251,18 @@ export const Technologies = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  margin: 40px 0;
+  margin: 16px 0;
 
   h3 {
-    line-height: 16px;
+    margin: 0;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 40px 0;
+
+    h3 {
+      line-height: 16px;
+    }
   }
 `;
 
@@ -280,7 +287,7 @@ export const ContainerGrid = styled.div`
     width: 70px;
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 1024px) {
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 10px;
@@ -299,13 +306,13 @@ export const ContainerLoading = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   flex-direction: column;
 
   h3 {
     font-size: 32px;
     font-weight: 400;
-    color: #161616;
+    color: #ffffff;
     margin: 0;
 
     animation: pulse 1.5s infinite;
@@ -344,7 +351,7 @@ export const ContainerLottie = styled.div`
   overflow-x: hidden;
   justify-content: center;
 
-  @media (min-width: 767px) {
+  @media (min-width: 1024px) {
     justify-content: initial;
     div {
       animation: slide 5s linear forwards;
@@ -360,5 +367,74 @@ export const ContainerLottie = styled.div`
         transform: translateX(600%);
       }
     }
+  }
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 32px 32px 48px 32px;
+
+  @media (min-width: 1024px) {
+    padding: 200px 0;
+  }
+`;
+
+export const Contact = styled.div`
+  width: 80%;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 8px;
+
+  @media (min-width: 1024px) {
+    align-items: flex-start;
+    padding: 128px 160px;
+    width: 70%;
+    border-radius: 32px;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(46, 46, 46, 1);
+    padding-bottom: 20px;
+    width: fit-content;
+
+    @media (min-width: 1024px) {
+      align-items: flex-start;
+
+      h3 {
+        line-height: 40px;
+      }
+    }
+  }
+
+  h3 {
+    font-size: 16px;
+
+    font-weight: 200;
+    margin-bottom: 16px;
+
+    @media (min-width: 1024px) {
+      font-size: 24px;
+      line-height: 16px;
+    }
+  }
+
+  button {
+    border-radius: 24px;
+  }
+
+  a {
+    color: rgba(0, 0, 0, 1);
+    font-weight: 400;
+    cursor: pointer;
+    margin-bottom: 8px;
   }
 `;

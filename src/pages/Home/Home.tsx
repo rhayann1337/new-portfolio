@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { RefObject, useEffect, useRef, useState } from "react";
 import {
   Header,
   ModalContent,
@@ -13,6 +13,8 @@ import {
   ContainerGrid,
   ContainerLoading,
   ContainerLottie,
+  Contact,
+  Footer,
 } from "./styles";
 import MenuIcon from "../../assets/menuIcon.svg";
 import {
@@ -35,6 +37,7 @@ import Astronaut from "../../assets/astronaut.json";
 export const Home: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const experienceDiv = useRef<HTMLDivElement>(null);
+  const technologiesDiv = useRef<HTMLDivElement>(null);
   const text =
     "Hello, Im Rhayann, an web and mobile developer and my journey is marked by challenges overcome, enriching experiences and an unwavering commitment to excellence.";
   const [displayText, setDisplayText] = useState("");
@@ -66,7 +69,7 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (charIndex < text.length) {
+      if (charIndex < text.length && progress === 100) {
         setDisplayText(displayText + text.charAt(charIndex));
         setCharIndex(charIndex + 1);
       } else {
@@ -75,11 +78,11 @@ export const Home: React.FC = () => {
     }, 50);
 
     return () => clearInterval(intervalId);
-  }, [charIndex, text, displayText]);
+  }, [charIndex, text, displayText, progress]);
 
-  const handleScrollToDiv = () => {
-    if (experienceDiv.current) {
-      experienceDiv.current.scrollIntoView({ behavior: "smooth" });
+  const handleScrollToDiv = (divRef: RefObject<HTMLDivElement>) => {
+    if (divRef.current) {
+      divRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -165,7 +168,7 @@ export const Home: React.FC = () => {
           <h3>Software Engineer</h3>
           <p>{displayText}</p>
         </Description>
-        <ScrollAnimation onClick={handleScrollToDiv}>
+        <ScrollAnimation onClick={() => handleScrollToDiv(experienceDiv)}>
           <KeyboardDoubleArrowDownIcon sx={{ color: "white" }} />
         </ScrollAnimation>
       </ContainerHome>
@@ -198,10 +201,13 @@ export const Home: React.FC = () => {
         </Experiences>
 
         <Technologies>
-          <Accordion sx={{ boxShadow: "none" }}>
+          <Accordion sx={{ boxShadow: "none" }} ref={technologiesDiv}>
             <AccordionSummary>
               <h3>
-                Technologies <ExpandMoreIcon />
+                Technologies{" "}
+                <ExpandMoreIcon
+                  onClick={() => handleScrollToDiv(technologiesDiv)}
+                />
               </h3>
             </AccordionSummary>
             <AccordionDetails>
@@ -478,6 +484,18 @@ export const Home: React.FC = () => {
           </Accordion>
         </Technologies>
       </ContainerExperiences>
+      <Footer>
+        <Contact className="Contact">
+          <div>
+            <h3>Take your ideas off paper and make them come to life</h3>
+            <button>Contact</button>
+          </div>
+          <h3>Personal contact</h3>
+          <a>Instagram</a>
+          <a>Linkedin</a>
+          <a>Github</a>
+        </Contact>
+      </Footer>
     </div>
   );
 };
