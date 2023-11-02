@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Moon from "../../assets/moon.png";
 
 export const Header = styled.div`
   display: flex;
@@ -289,6 +290,75 @@ export const ContainerGrid = styled.div`
       padding: 20px;
       height: initial;
       width: initial;
+    }
+  }
+`;
+
+export const ContainerLoading = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  flex-direction: column;
+
+  h3 {
+    font-size: 32px;
+    font-weight: 400;
+    color: #161616;
+    margin: 0;
+
+    animation: pulse 1.5s infinite;
+
+    @keyframes pulse {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 0;
+      animation: grow-shrink 1.5s infinite;
+    }
+
+    @keyframes grow-shrink {
+      0%,
+      100% {
+        width: 0;
+      }
+      50% {
+        width: 1em;
+      }
+    }
+  }
+`;
+
+export const ContainerLottie = styled.div`
+  width: 100%;
+  display: flex;
+  overflow-x: hidden;
+  justify-content: center;
+
+  @media (min-width: 767px) {
+    justify-content: initial;
+    div {
+      animation: slide 5s linear forwards;
+      animation-fill-mode: forwards;
+      margin: 0;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(600%);
+      }
     }
   }
 `;

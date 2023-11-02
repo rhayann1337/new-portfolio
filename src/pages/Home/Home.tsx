@@ -11,6 +11,8 @@ import {
   ContainerExperiences,
   Technologies,
   ContainerGrid,
+  ContainerLoading,
+  ContainerLottie,
 } from "./styles";
 import MenuIcon from "../../assets/menuIcon.svg";
 import {
@@ -19,7 +21,6 @@ import {
   AccordionSummary,
   Box,
   Modal,
-  Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import ProfilePhoto from "../../assets/profile.png";
@@ -28,6 +29,8 @@ import Ohubdev from "../../assets/ohubdevfooter.svg";
 import Automac from "../../assets/automac.png";
 import Arco from "../../assets/arco.svg";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Lottie from "react-lottie";
+import Astronaut from "../../assets/astronaut.json";
 
 export const Home: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -36,6 +39,30 @@ export const Home: React.FC = () => {
     "Hello, Im Rhayann, an web and mobile developer and my journey is marked by challenges overcome, enriching experiences and an unwavering commitment to excellence.";
   const [displayText, setDisplayText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
+  const [loadingFinished, setLoadingFinished] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (progress < 100) {
+        setProgress(progress + 1);
+      }
+    }, 50);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [progress]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadingFinished(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -55,6 +82,31 @@ export const Home: React.FC = () => {
       experienceDiv.current.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: Astronaut,
+  };
+
+  if (loadingFinished)
+    return (
+      <ContainerLoading>
+        <ContainerLottie>
+          <Lottie
+            options={defaultOptions}
+            height={250}
+            width={250}
+            style={{ margin: 0 }}
+          />
+        </ContainerLottie>
+
+        <h3>Progress {progress}%</h3>
+        <h3>
+          Loading<span>...</span>
+        </h3>
+      </ContainerLoading>
+    );
 
   return (
     <div>
