@@ -37,7 +37,10 @@ import Astronaut from "../../assets/astronaut.json";
 export const Home: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const experienceDiv = useRef<HTMLDivElement>(null);
+  const aboutMeDiv = useRef<HTMLDivElement>(null);
+  const homeDiv = useRef<HTMLDivElement>(null);
   const technologiesDiv = useRef<HTMLDivElement>(null);
+  const contactDiv = useRef<HTMLDivElement>(null);
   const text =
     "Hello, Im Rhayann, an web and mobile developer and my journey is marked by challenges overcome, enriching experiences and an unwavering commitment to excellence.";
   const [displayText, setDisplayText] = useState("");
@@ -84,6 +87,8 @@ export const Home: React.FC = () => {
     if (divRef.current) {
       divRef.current.scrollIntoView({ behavior: "smooth" });
     }
+
+    setShowMenu(false)
   };
 
   const defaultOptions = {
@@ -113,19 +118,12 @@ export const Home: React.FC = () => {
 
   return (
     <div>
-      <Header>
+      <Header ref={homeDiv}>
         <>
-          <a>Instagram</a>
-          <a>Github</a>
-          <a>Linkedin</a>
-          <a>
+          <a href="https://github.com/rhayann1337" target="_blank">Github</a>
+          <a href="https://www.linkedin.com/in/rhayann-schuvantek/" target="_blank">Linkedin</a>
+          <a onClick={() => handleScrollToDiv(contactDiv)}>
             Lets talk
-            <img
-              src="https://www.okler.net/previews/porto/9.9.3/img/demos/personal-portfolio-1/svg/arrow.svg"
-              width={25}
-              height={25}
-              alt="Arrow"
-            />
           </a>
         </>
 
@@ -149,17 +147,16 @@ export const Home: React.FC = () => {
                 <CloseIcon />
               </Icon>
 
-              <a>Home</a>
-              <a>About me</a>
-              <a>Projects</a>
-              <a>Instagram</a>
-              <a>Github</a>
-              <a>Linkedin</a>
+              <a onClick={() => handleScrollToDiv(homeDiv)}>Home</a>
+              <a onClick={() => handleScrollToDiv(aboutMeDiv)}>About me</a>
+              <a onClick={() => handleScrollToDiv(experienceDiv)}>Projects</a>
+              <a href="https://github.com/rhayann1337" target="_blank">Github</a>
+              <a href="https://www.linkedin.com/in/rhayann-schuvantek/" target="_blank">Linkedin</a>
             </ModalContent>
           </Box>
         </Modal>
       </Header>
-      <ContainerHome>
+      <ContainerHome ref={aboutMeDiv}>
         <Photo>
           <img src={ProfilePhoto} alt="ProfilePhoto" />
         </Photo>
@@ -485,15 +482,15 @@ export const Home: React.FC = () => {
         </Technologies>
       </ContainerExperiences>
       <Footer>
-        <Contact className="Contact">
+        <Contact ref={contactDiv} className="Contact">
+        https://wa.me/+5541984625517
           <div>
             <h3>Take your ideas off paper and make them come to life</h3>
-            <button>Contact</button>
+            <button onClick={() => window.open('https://wa.me/+5541984625517')}>Contact</button>
           </div>
           <h3>Personal contact</h3>
-          <a>Instagram</a>
-          <a>Linkedin</a>
-          <a>Github</a>
+          <a href="https://www.linkedin.com/in/rhayann-schuvantek/" target="_blank">Linkedin</a>
+          <a href="https://github.com/rhayann1337" target="_blank">Github</a>
         </Contact>
       </Footer>
     </div>

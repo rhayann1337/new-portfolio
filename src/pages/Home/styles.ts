@@ -214,6 +214,7 @@ export const ContainerExperiences = styled.div`
     font-size: 32px;
     line-height: 44px;
     font-weight: 400;
+    color: black;
   }
 `;
 
@@ -411,6 +412,7 @@ export const Contact = styled.div`
 
       h3 {
         line-height: 40px;
+        color: black;
       }
     }
   }
@@ -420,6 +422,7 @@ export const Contact = styled.div`
 
     font-weight: 200;
     margin-bottom: 16px;
+    color: black;
 
     @media (min-width: 1024px) {
       font-size: 24px;
